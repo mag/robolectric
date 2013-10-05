@@ -5,9 +5,18 @@ title: Android Jars
 
 ## How Robolectric Loads Android Jars
 
-
 To use the real Android code (as opposed to the SDK), the Robolectric maintainers have checked out the full AOSP and built all the code needed by Robolectric.
 These built artifacts are stored in Maven Central under org.robolectric. Robolectric is compiled against these JARs.
+
+We have not (yet) produced source JARs for these compiled class JARs. If you are debugging Robolectric, it is helpful to attach the sources directly from where they reside in the AOSP build. We don't have a good mapping from the various JARs to the correct source roots. Here's our best guess, assuming your IDE can traverse down and find all the sources under a higher-level directory:
+
+```
+android-base:             AOSP/frameworks/base
+android-ext:     		  AOSP/external
+android-libcore:          AOSP/libcore
+android-telephony-common: AOSP/frameworks/opt
+android-policy:           AOSP/frameworks/base/policy
+```
 
 ## Building the Android Artifacts
 
